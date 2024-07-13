@@ -1,5 +1,5 @@
 # Recipes Hub
-Aplikacja do dodawania nowych receptur i obrazków za posrednictwem kont uzytkownika.
+Aplikacja do dodawania nowych receptur i obrazków za pośrednictwem kont użytkownika.
 
 
 # Stos technologiczny
@@ -7,14 +7,14 @@ Aplikacja do dodawania nowych receptur i obrazków za posrednictwem kont uzytkow
 - ASP.NET Core Identity
 - Entity Framework
 # Instalacja
-Wypakowac repozytorium do folderu i uruchomic plik .sln za pomocą Visual Studio 2022
-Po otwarciu projektu uruchomic konsolę menedżerów pakietów i uruchomić komendę
+Wypakować repozytorium do folderu i uruchomić plik .sln za pomocą Visual Studio 2022
+Po otwarciu projektu uruchomić konsolę menedżerów pakietów i uruchomić komendę
 ```
 update-database
 ```
 
 # Struktura
-Kontroler RecipesController został wygenerowany za pkmocą scaffodling EF, zostały zmodyfikowane metody create i edit aby wspierać wysyłanie bitmap
+Kontroler RecipesController został wygenerowany za pomocą scaffolding EF, zostały zmodyfikowane metody create i edit aby wspierać wysyłanie bitmap
 ```
 if (Image != null && Image.Length > 0)
 {
