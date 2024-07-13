@@ -1,0 +1,67 @@
+﻿@model IEnumerable<RecipesHub.Models.Recipe>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Przepisy";
+}
+
+<h1>Przepisy</h1>
+
+<p>
+    <a asp-action="Create">Stwórz nowy</a>
+</p>
+<table class="table tabledit reduce">
+    <thead>
+        <tr>
+            <th>
+                Obrazek
+            </th>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Autor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img class="imgs" src="@item.ImageUrl" alt="Obrazek produktu" width="100" />
+                    }
+                    else
+                    {
+                        <span>Brak obrazka</span>
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="reduce">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+
+            <td>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                    @if(User.IsInRole("Admin"))
+                    {
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
