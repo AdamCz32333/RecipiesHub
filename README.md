@@ -15,27 +15,37 @@ update-database
 ```
 
 # Struktura
-Kontroler RecipesController został wygenerowany za pomocą scaffolding EF, zostały zmodyfikowane metody create i edit aby wspierać wysyłanie bitmap do katalogu wwwroot/images
-```
-if (Image != null && Image.Length > 0)
-{
-    var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
-    if (!Directory.Exists(uploads))
-    {
-        Directory.CreateDirectory(uploads);
-    }
+## Model
+Za pośrednictwem formularza do bazy danych są wysyłane tytuł, opis, ścieżka do obrazka i nazwa autora
+![image](https://github.com/user-attachments/assets/4651c9ae-b8e4-48f9-b0b7-50b2c6a0301a)
 
-    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
-    var filePath = Path.Combine(uploads, uniqueFileName);
 
-    using (var stream = new FileStream(filePath, FileMode.Create))
-    {
-        await Image.CopyToAsync(stream);
-    }
+## Kontroler
+RecipesController.cs został wygenerowany przez funkcję scaffolding (Kontroler MVC z widokami korzystającymi z programu Entity Framework)
+Zostały zmodyfikowane wygenerowane metody public async Task<IActionResult> Edit oraz public async Task<IActionResult> Create aby pozwolić na przesyłanie bitmap do katalogu wwwroot/images
 
-    recipe.ImageUrl = "/images/" + uniqueFileName;
-}
-```
+![image](https://github.com/user-attachments/assets/5c6b7241-213c-49fd-bdaf-f38018c622a6)
+
+Dodany został też kod który usuwa z nazwy autora domenę mailową
+
+![image](https://github.com/user-attachments/assets/dd7fa165-d449-4930-855a-a0a1e1dba352)
+
+## Widoki
+Widoki zostały wygenerowane przez funkcję scaffolding (Kontroler MVC z widokami korzystającymi z programu Entity Framework). Jest podział na strefę dla niezalogowanych użytkowników (Home/index.cshtml)
+
+![image](https://github.com/user-attachments/assets/4bcd8701-0e6c-432d-97f6-f3aa28cd62d4)
+
+I zalogowanych (Recipes/index.cshtml)
+![image](https://github.com/user-attachments/assets/d411cd2e-e773-499b-8d4f-7caf24c2a8bc)
+
+Po kliknięciu w opcję stwórz nowy przechodzimy do widoku create (Recipes/create.cshtml)
+![image](https://github.com/user-attachments/assets/145b39b9-6eb8-477f-8517-148146c9b6a4)
+
+Widok edit jest zarezerwowany dla administratora
+![image](https://github.com/user-attachments/assets/b01f15da-55c1-455e-8ad5-ce2b846614bb)
+
+
+
 # Administracja
 Kod roli administratora i dane logowania do konta admina znajdują się w pliku program.cs
 ```
@@ -73,4 +83,7 @@ Kod roli administratora i dane logowania do konta admina znajdują się w pliku 
         }
 ```
 Admin jest w stanie edytować i usuwać rekordy z listy receptur
+
+![image](https://github.com/user-attachments/assets/0d8c1739-707b-4972-affd-d991b0dc4c6b)
+
 
