@@ -1,4 +1,4 @@
-i# Recipes Hub
+# Recipes Hub
 Aplikacja do dodawania nowych receptur i obrazków za pośrednictwem kont użytkownika.
 
 
@@ -15,7 +15,7 @@ update-database
 ```
 
 # Struktura
-Kontroler RecipesController został wygenerowany za pomocą scaffolding EF, zostały zmodyfikowane metody create i edit aby wspierać wysyłanie bitmap
+Kontroler RecipesController został wygenerowany za pomocą scaffolding EF, zostały zmodyfikowane metody create i edit aby wspierać wysyłanie bitmap do katalogu wwwroot/images
 ```
 if (Image != null && Image.Length > 0)
 {
@@ -37,7 +37,7 @@ if (Image != null && Image.Length > 0)
 }
 ```
 # Administracja
-Kod roli Admina i dane logowania znajduje się w program.cs
+Kod roli administratora i dane logowania do konta admina znajdują się w pliku program.cs
 ```
         using (var scope = app.Services.CreateScope())
         {
