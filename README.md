@@ -1,5 +1,6 @@
 # Recipes Hub
 Aplikacja do dodawania nowych receptur i obrazków za pośrednictwem kont użytkownika.
+Autor projektu: Adam Czajka
 
 
 # Stos technologiczny
