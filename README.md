@@ -1,4 +1,4 @@
-# Recipes Hub
+i# Recipes Hub
 Aplikacja do dodawania nowych receptur i obrazków za pośrednictwem kont użytkownika.
 
 
@@ -6,6 +6,7 @@ Aplikacja do dodawania nowych receptur i obrazków za pośrednictwem kont użytk
 - .NET 6
 - ASP.NET Core Identity
 - Entity Framework
+- Microsoft SQL Server
 # Instalacja
 Wypakować repozytorium do folderu i uruchomić plik .sln za pomocą Visual Studio 2022
 Po otwarciu projektu uruchomić konsolę menedżerów pakietów i uruchomić komendę
